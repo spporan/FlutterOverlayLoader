@@ -26,9 +26,15 @@ class MyHomePage extends StatefulWidget {
   _MyHomePageState createState() => _MyHomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
+class _MyHomePageState extends State<MyHomePage> with SingleTickerProviderStateMixin {
 
+@override
+  void dispose() {
+  Loader.hide();
+  print("Called dispose");
 
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -46,9 +52,9 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text("ShowLoader 1"),
                 onPressed: (){
                   //default
-                  Loader.show(context);
+                  Loader.show(context,progressIndicator:LinearProgressIndicator());
 
-                  Future.delayed(Duration(seconds: 3),(){
+                  Future.delayed(Duration(seconds: 10),(){
 
                     Loader.hide();
                   });
@@ -59,9 +65,12 @@ class _MyHomePageState extends State<MyHomePage> {
             RaisedButton(
                 child: Text("ShowLoader 2"),
                 onPressed: (){
-                  Loader.show(context,progressIndicator: CircularProgressIndicator(backgroundColor: Colors.greenAccent,),themeData: Theme.of(context).copyWith(accentColor: Colors.green));
+
+                  Loader.show(context,progressIndicator: CircularProgressIndicator(backgroundColor: Colors.red,),themeData: Theme.of(context).copyWith(accentColor: Colors.green));
                   Future.delayed(Duration(seconds: 3),(){
+
                     Loader.hide();
+
                   });
 
 
@@ -71,7 +80,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 child: Text("ShowLoader 3"),
                 onPressed: (){
                   Loader.show(
-                      context,progressIndicator: CircularProgressIndicator(backgroundColor: Colors.green,),
+                      context,progressIndicator: CircularProgressIndicator(),
                       themeData: Theme.of(context).copyWith(accentColor: Colors.black38),
                     overlayColor:Color(0x99E8EAF6)
                   );
@@ -90,6 +99,9 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 }
+
+
+
 
 
 

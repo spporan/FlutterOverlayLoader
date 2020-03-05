@@ -2,35 +2,55 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class Loader extends StatelessWidget {
-  static OverlayEntry currentLoader;
-  Loader._({this.progressIndicator,this.themeData});
-  final ProgressIndicator progressIndicator;
-  final ThemeData themeData;
+  static OverlayEntry _currentLoader;
+  Loader._(this._progressIndicator,this._themeData);
+  final Widget _progressIndicator;
+  final ThemeData _themeData;
+  static  OverlayState _overlayState;
 
+  static void show(BuildContext context,{ Widget progressIndicator,ThemeData themeData,Color overlayColor}) {
+    _overlayState= Overlay.of(context);
+    if(_currentLoader==null){
+      _currentLoader = new OverlayEntry(
+          builder: (context) => Stack(
+            children: <Widget>[
+              SafeArea(child: Container(
+                color: overlayColor??Color(0x99ffffff),
+              ),),
+              Center(
+                  child: Loader._( progressIndicator,themeData,)
+              ),
+            ],
+          ));
+      try{
+        WidgetsBinding.instance.addPostFrameCallback((_) => _overlayState.insertAll([_currentLoader]));
+      }catch(e){
+        print(e.toString());
 
-  static void show(BuildContext context,{ ProgressIndicator progressIndicator,ThemeData themeData,Color overlayColor}) {
-    currentLoader = new OverlayEntry(
-        builder: (context) => Stack(
-          children: <Widget>[
-            SafeArea(child: Container(
-              color: overlayColor??Color(0x99ffffff),
-            ),),
-            Center(
-                child: Loader._(progressIndicator: progressIndicator,themeData: themeData,)
-            ),
-          ],
-        ));
-    Overlay.of(context).insert(currentLoader);
+      }
+
+    }
   }
 
   static void hide() {
-    currentLoader?.remove();
+    if(_currentLoader!=null){
+     try{
+       _currentLoader.remove();
+     }catch(e){
+       print(e.toString());
+     }
+     finally{
+       _currentLoader=null;
+     }
+
+   }
+
   }
 
   @override
   Widget build(BuildContext context) {
     return Center(
-      child: Theme(data: themeData??Theme.of(context).copyWith(accentColor: Colors.blue), child: progressIndicator?? CircularProgressIndicator()),
+      child: Theme(data: _themeData??Theme.of(context).copyWith(accentColor: Colors.blue), child: _progressIndicator?? CircularProgressIndicator()),
     );
   }
 }
