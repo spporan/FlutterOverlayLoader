@@ -1,3 +1,9 @@
-## [0.0.1] - TODO: Add release date.
+## [0.0.1] - Mar 2, 2020
 
-* TODO: Describe initial release.
+* Develop this plugin for overlay loading.
+
+## [0.0.1] - Mar 6, 2020
+
+* Fixed issue
+*Only one OverlayEntry will be added.
+*Fixed on Loading hide problem
