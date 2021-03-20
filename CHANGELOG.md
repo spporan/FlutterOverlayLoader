@@ -13,3 +13,7 @@
 * Added Null safety support
 * Added option for Appbar overlayable or not
 * Added option for BottomAppbar overlayable or not
+
+## [0.1.1] - Mar 20, 2021
+* Added Null safety support
+* Update documentation

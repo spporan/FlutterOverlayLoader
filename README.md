@@ -5,12 +5,12 @@ A new Flutter package for developer who want to show overlay loader or progressb
 
 Overlay loader without overlaying Appbar
 <p align="center">
-<img src="https://github.com/spporan/FlutterOverlayLoader/blob/master/screenshots/Screenshot_20210320_173253.jpg" alt="drawing" width="230px" hspace="30"/>  <img src="https://github.com/spporan/FlutterOverlayLoader/blob/master/screenshots/Screenshot_20210320_173304.jpg" alt="drawing" width="230px"/> 
+<img src="https://user-images.githubusercontent.com/21147796/111874514-e9405b80-89bf-11eb-9508-3ad1b66ac3ef.jpg" alt="drawing" width="230px" hspace="30"/>  <img src="https://user-images.githubusercontent.com/21147796/111874551-0f65fb80-89c0-11eb-851e-92c88872ac16.jpg" alt="drawing" width="230px"/> 
 </p>
 
 Overlay Loader without overlaying BottomAppBar and also overlaying AppBar
 <p align="center">
-<img src="https://github.com/spporan/FlutterOverlayLoader/blob/master/screenshots/Screenshot_20210320_173311.jpg" alt="drawing" width="230px" hspace="30"/> 
+<img src="https://user-images.githubusercontent.com/21147796/111874514-e9405b80-89bf-11eb-9508-3ad1b66ac3ef.jpg" alt="drawing" width="230px" hspace="30"/> 
 </p>
 
 ## Getting Started
@@ -19,7 +19,7 @@ Overlay Loader without overlaying BottomAppBar and also overlaying AppBar
 
 ```yaml
 dependencies:
-  flutter_overlay_loader: ^0.1.0-nullsafety
+  flutter_overlay_loader: ^0.1.1
 ```
 
 ###  Import
