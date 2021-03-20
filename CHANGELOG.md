@@ -8,7 +8,7 @@
 *Only one OverlayEntry will be added.
 *Fixed on Loading hide problem
 
-## [0.1.0] - Mar 20, 2021
+## [0.1.0-nullsafety] - Mar 20, 2021
 
 * Added Null safety support
 * Added option for Appbar overlayable or not

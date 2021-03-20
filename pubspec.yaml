@@ -1,6 +1,6 @@
 name: flutter_overlay_loader
 description: A new Flutter package for developer who want to show overlay loader or progressbar for completing future task.
-version: 0.1.0
+version: 0.1.0-nullsafety
 
 homepage: https://github.com/spporan/FlutterOverlayLoader
 
