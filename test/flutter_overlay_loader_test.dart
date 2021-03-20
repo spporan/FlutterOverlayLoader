@@ -17,22 +17,20 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title}) : super(key: key);
+  MyHomePage({Key? key, this.title}) : super(key: key);
 
-  final String title;
+  final String? title;
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text(widget.title),
+        title: Text(widget.title!),
       ),
       body: Center(
         child: Column(
@@ -41,30 +39,27 @@ class _MyHomePageState extends State<MyHomePage> {
             Text(
               'Downloading..........',
             ),
-            RaisedButton(
+            ElevatedButton(
                 child: Text("Click"),
-                onPressed: (){
+                onPressed: () {
                   print("Click");
-
-
                 }),
-            RaisedButton(
+            ElevatedButton(
                 child: Text("ShowLoader"),
-                onPressed: (){
-                  Loader.show(context,progressIndicator:CircularProgressIndicator(backgroundColor: Colors.green,),themeData: Theme.of(context).copyWith(accentColor: Colors.black54));
-                  Future.delayed(Duration(seconds: 3),(){
+                onPressed: () {
+                  Loader.show(context,
+                      progressIndicator: CircularProgressIndicator(
+                        backgroundColor: Colors.green,
+                      ),
+                      themeData: Theme.of(context)
+                          .copyWith(accentColor: Colors.black54));
+                  Future.delayed(Duration(seconds: 3), () {
                     Loader.hide();
                   });
-
-
-
                 }),
-
-
           ],
         ),
       ),
-
     );
   }
 }
