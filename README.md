@@ -3,13 +3,23 @@
 
 A new Flutter package for developer who want to show overlay loader or progressbar for completing future task.
 
+Overlay loader without overlaying Appbar
+<p align="center">
+<img src="https://github.com/spporan/FlutterOverlayLoader/blob/master/screenshots/Screenshot_20210320_173253.jpg" alt="drawing" width="230px" hspace="30"/>  <img src="https://github.com/spporan/FlutterOverlayLoader/blob/master/screenshots/Screenshot_20210320_173304.jpg" alt="drawing" width="230px"/> 
+</p>
+
+Overlay Loader without overlaying BottomAppBar and also overlaying AppBar
+<p align="center">
+<img src="https://github.com/spporan/FlutterOverlayLoader/blob/master/screenshots/Screenshot_20210320_173311.jpg" alt="drawing" width="230px" hspace="30"/> 
+</p>
+
 ## Getting Started
 
 ##  Installing
 
 ```yaml
 dependencies:
-  flutter_overlay_loader: ^0.0.2
+  flutter_overlay_loader: ^0.1.0
 ```
 
 ###  Import
@@ -31,7 +41,13 @@ Loader.hide();
 
 You can customize this loader..
 ```dart
-Loader.show(context,progressIndicator: CircularProgressIndicator(backgroundColor: Colors.red,),themeData: Theme.of(context).copyWith(accentColor: Colors.green));
+Loader.show(context,
+                      isAppbarOverlay: true,
+                      isBottomBarOverlay: false,
+                      progressIndicator: CircularProgressIndicator(),
+                      themeData: Theme.of(context)
+                          .copyWith(accentColor: Colors.black38),
+                      overlayColor: Color(0x99E8EAF6));
 
 ```
 
