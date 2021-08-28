@@ -1,4 +1,7 @@
 
+## [1.0.2] - Aug 28, 2021
+* Update changelogmd also
+
 ## [1.0.1] - Aug 28, 2021
 * Update documentation also
 
