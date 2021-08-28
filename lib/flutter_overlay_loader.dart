@@ -11,6 +11,9 @@ class Loader extends StatelessWidget {
 
   static OverlayState? _overlayState;
 
+  /// If you need to show an normal overlayloader, 
+  /// just call Loader.show() with a build context. BuildContext is a required param.
+  
   static void show(BuildContext context,
       {Widget? progressIndicator,
 
@@ -59,16 +62,26 @@ class Loader extends StatelessWidget {
           ],
         );
       });
+
       try {
         WidgetsBinding.instance?.addPostFrameCallback(
-            (_) => _overlayState?.insertAll([_currentLoader!]));
+            (_) {
+
+              if(_currentLoader != null) {
+              _overlayState?.insert(_currentLoader!);
+              }
+
+            });
       } catch (e) {}
     }
   }
 
+  /// You have to call hide() method in the dispose method to clear
+  ///  the overlay or hide your loader when your view is disposed otherwise throws an exception.
+  /// And also you have to call hide() method when you need to hide your overlay loader. For exmaple, After finishing your api call you need to hide your loader. then just call Loader.hide()
   static void hide() {
     if (_currentLoader != null) {
-      try {
+      try { 
         _currentLoader?.remove();
       } catch (e) {
         print(e.toString());
