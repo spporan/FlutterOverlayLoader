@@ -21,3 +21,6 @@
 ## [1.0.0] - Aug 28, 2021
 * This is a stable release!
 * Fixed some issues
+
+## [1.0.1] - Aug 28, 2021
+* Update documentation also
