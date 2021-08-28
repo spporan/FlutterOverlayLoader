@@ -11,49 +11,62 @@ class Loader extends StatelessWidget {
 
   static OverlayState? _overlayState;
 
-  /// If you need to show an normal overlayloader, 
+  /// If you need to show an normal overlayloader,
   /// just call Loader.show() with a build context. BuildContext is a required param.
-  
+
   static void show(BuildContext context,
-      {Widget? progressIndicator,
+      {
 
       /// Define your custom progress indicator if you want [optional]
-      ThemeData? themeData,
+      Widget? progressIndicator,
 
       /// Define Theme [optional]
-      Color? overlayColor,
+      ThemeData? themeData,
 
       /// Define Overlay color [optional]
+      Color? overlayColor,
+
+      /// overlayTop mean overlay start from Top margin. If you have custom appbar and you want to show loader without custom appbar then will be custom appbar height here and also you have to make sure [isAppbarOverlay = false].
       double? overlayFromTop,
 
-      /// overlayTop mean overlay start from Top margin. If you have custom appbar then will be custom appbar height here.
+      /// overlayFromBottom mean overlay end to Bottom margin.If you have custom BottomAppBar and you want to show loader without custom BottomAppBar then will be custom BottomAppBar height here and also you have to make sure [isBottomBarOverlay = false].
       double? overlayFromBottom,
 
-      /// overlayFromBottom mean overlay end from Bottom margin.If you have custom BottomAppBar then will be custom BottomAppBar height here.
-      bool isAppbarOverlay = false,
+      /// isAppbarOverlay default true. If you need to appbar outside from overlay loader then make it false.
+      bool isAppbarOverlay = true,
 
-      /// isAppbarOverlay default false. By default overlay start from appbar. If haven't any AppBar then change to true.
-      bool isBottomBarOverlay = true
+      /// isBottomBarOverlay default true. If you need to Bottombar outside from overlay loader then make it false.
+      bool isBottomBarOverlay = true,
 
-      /// isBottomBarOverlay default true. If you don't want to overlap bottomAppbar then do false.
-      }) {
+      /// isSafeAreaOverlay default true. If you don't want to overlay  your safe area like statusbar and bottomnavbar then make it false.
+      bool isSafeAreaOverlay = true}) {
+    var safeBottomPadding = MediaQuery.of(context).padding.bottom;
+    var defaultPaddingTop = 0.0;
+    var defaultPaddingBottom = 0.0;
+    if (!isAppbarOverlay) {
+      isSafeAreaOverlay = false;
+    }
+    if (!isSafeAreaOverlay) {
+      defaultPaddingTop = defaultValue;
+      defaultPaddingBottom = defaultValue + safeBottomPadding;
+    } else {
+      defaultPaddingTop = defaultValue;
+      defaultPaddingBottom = defaultValue;
+    }
+
     _overlayState = Overlay.of(context);
     if (_currentLoader == null) {
       ///Create current Loader Entry
       _currentLoader = new OverlayEntry(builder: (context) {
         return Stack(
           children: <Widget>[
-            SafeArea(
-              child: Container(
-                color: overlayColor ?? Color(0x99ffffff),
-                margin: EdgeInsets.only(
-                    top:
-                        !isAppbarOverlay ? overlayFromTop ?? defaultValue : 0.0,
-                    bottom: isBottomBarOverlay
-                        ? 0.0
-                        : overlayFromBottom ?? defaultValue),
-              ),
-            ),
+            _overlayWidget(
+                isSafeAreaOverlay,
+                overlayColor ?? Color(0x99ffffff),
+                isAppbarOverlay ? 0.0 : overlayFromTop ?? defaultPaddingTop,
+                isBottomBarOverlay
+                    ? 0.0
+                    : overlayFromBottom ?? defaultPaddingBottom),
             Center(
                 child: Loader._(
               progressIndicator,
@@ -64,16 +77,29 @@ class Loader extends StatelessWidget {
       });
 
       try {
-        WidgetsBinding.instance?.addPostFrameCallback(
-            (_) {
-
-              if(_currentLoader != null) {
-              _overlayState?.insert(_currentLoader!);
-              }
-
-            });
+        WidgetsBinding.instance?.addPostFrameCallback((_) {
+          if (_currentLoader != null) {
+            _overlayState?.insert(_currentLoader!);
+          }
+        });
       } catch (e) {}
     }
+  }
+
+  static Widget _overlayWidget(bool isSafeArea, Color overlayColor,
+      double overlayFromTop, double overlayFromBottom) {
+    return isSafeArea
+        ? Container(
+            color: overlayColor,
+            margin:
+                EdgeInsets.only(top: overlayFromTop, bottom: overlayFromBottom),
+          )
+        : SafeArea(
+            child: Container(
+            color: overlayColor,
+            margin:
+                EdgeInsets.only(top: overlayFromTop, bottom: overlayFromBottom),
+          ));
   }
 
   /// You have to call hide() method in the dispose method to clear
@@ -81,7 +107,7 @@ class Loader extends StatelessWidget {
   /// And also you have to call hide() method when you need to hide your overlay loader. For exmaple, After finishing your api call you need to hide your loader. then just call Loader.hide()
   static void hide() {
     if (_currentLoader != null) {
-      try { 
+      try {
         _currentLoader?.remove();
       } catch (e) {
         print(e.toString());

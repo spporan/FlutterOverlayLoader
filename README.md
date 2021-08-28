@@ -19,7 +19,7 @@ Overlay Loader without overlaying BottomAppBar and also overlaying AppBar
 
 ```yaml
 dependencies:
-  flutter_overlay_loader: ^1.0.2
+  flutter_overlay_loader: ^1.0.3
 ```
 
 ###  Import
@@ -41,7 +41,8 @@ Loader.hide();
 
 You can customize this loader..
 ```dart
-Loader.show(context,
+Loader.show(context,  
+                      isSafeAreaOverlay: false,
                       isAppbarOverlay: true,
                       isBottomBarOverlay: false,
                       progressIndicator: CircularProgressIndicator(),

@@ -35,10 +35,7 @@ class _MyHomePageState extends State<MyHomePage>
     super.dispose();
   }
 
-  void _onItemTapped(int index) {
-
-  }
-
+  void _onItemTapped(int index) {}
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage>
     return Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
+        toolbarHeight: 100,
       ),
       body: Center(
         child: Column(
@@ -72,7 +70,10 @@ class _MyHomePageState extends State<MyHomePage>
                 child: Text("ShowLoader 2"),
                 onPressed: () {
                   Loader.show(context,
+                      isSafeAreaOverlay: false,
                       isBottomBarOverlay: false,
+                      overlayFromBottom: 80,
+                      overlayColor: Colors.black26,
                       progressIndicator: CircularProgressIndicator(
                         backgroundColor: Colors.red,
                       ),
@@ -86,8 +87,8 @@ class _MyHomePageState extends State<MyHomePage>
                 child: Text("ShowLoader 3"),
                 onPressed: () {
                   Loader.show(context,
-                      isAppbarOverlay: true,
-                      isBottomBarOverlay: false,
+                      isAppbarOverlay: false,
+                      overlayFromTop: 100,
                       progressIndicator: CircularProgressIndicator(),
                       themeData: Theme.of(context)
                           .copyWith(accentColor: Colors.black38),
@@ -99,16 +100,17 @@ class _MyHomePageState extends State<MyHomePage>
             ElevatedButton(
                 child: Text("ShowLoader 4"),
                 onPressed: () {
-                  /*Loader.show(
-                      context,progressIndicator: CircularProgressIndicator(),
-                      themeData: Theme.of(context).copyWith(accentColor: Colors.black38),
-                      overlayColor:Color(0x99E8EAF6)
-                  );*/
-                  /* Future.delayed(Duration(seconds: 3),(){
+                  Loader.show(context,
+                      isSafeAreaOverlay: false,
+                      progressIndicator: CircularProgressIndicator(),
+                      isBottomBarOverlay: false,
+                      overlayFromBottom: 80,
+                      themeData: Theme.of(context)
+                          .copyWith(accentColor: Colors.black38),
+                      overlayColor: Color(0x99E8EAF6));
+                  Future.delayed(Duration(seconds: 3), () {
                     Loader.hide();
-                  });*/
-
-                  Loader.hide();
+                  });
                 }),
           ],
         ),
@@ -130,7 +132,8 @@ class _MyHomePageState extends State<MyHomePage>
         ],
         currentIndex: 0,
         selectedItemColor: Colors.amber[800],
-        onTap: _onItemTapped
+        onTap: _onItemTapped,
+        iconSize: 50,
       ),
     );
   }

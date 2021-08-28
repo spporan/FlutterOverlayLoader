@@ -1,4 +1,7 @@
 
+## [1.0.3] - Aug 28, 2021
+* Added show overlay loader with/wthout SafeArea like statusbar,notch.
+
 ## [1.0.2] - Aug 28, 2021
 * Update changelogmd also
 
