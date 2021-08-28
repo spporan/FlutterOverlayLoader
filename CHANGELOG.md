@@ -17,3 +17,7 @@
 ## [0.1.1] - Mar 20, 2021
 * Added Null safety support
 * Update documentation
+
+## [1.0.0] - Aug 28, 2021
+* This is a stable release!
+* Fixed some issues
