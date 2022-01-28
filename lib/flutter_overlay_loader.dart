@@ -10,6 +10,8 @@ class Loader extends StatelessWidget {
   final ThemeData? _themeData;
 
   static OverlayState? _overlayState;
+  
+  static bool get isShown => _currentLoader != null;
 
   /// If you need to show an normal overlayloader,
   /// just call Loader.show() with a build context. BuildContext is a required param.
