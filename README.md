@@ -33,9 +33,7 @@ import 'package:flutter_overlay_loader/flutter_overlay_loader.dart';
 When start network call then call this line of code..
 
 ```dart
-Loader.show(context,progressIndicator:LinearProgressIndicator
-(
-));
+Loader.show(context,progressIndicator:LinearProgressIndicator());
 ```
 
 After finished network call then call :
@@ -47,35 +45,25 @@ Loader.hide();
 You can customize this loader..
 
 ```dart
-Loader.show(context,isSafeAreaOverlay: false
-,
-isAppbarOverlay: true
-,
-isBottomBarOverlay: false
-,
-progressIndicator: CircularProgressIndicator
-(
-),themeData: Theme.of(context).
-copyWith
-(
-accentColor: Colors.black38),
-overlayColor: Color
-(0x99E8EAF6)
+Loader.show(context,
+  isSafeAreaOverlay: false,
+  isBottomBarOverlay: false,
+  overlayFromBottom: 80,
+  overlayColor: Colors.black26,
+  progressIndicator: CircularProgressIndicator(backgroundColor: Colors.red),
+  themeData: Theme.of(context)
+    .copyWith(colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.green))
 );
-
 ```
 
 You can also check loader is showing or not using the property : ```Loader.isShown``` and you can
 prevent back pressed like this snippet:
 
 ```dart
-    WillPopScope
-(
-child: //TODO , 
-onWillPop:(
+WillPopScope(
+  child: //TODO , 
+  onWillPop:()async => !Loader.isShown
 )
-async => !
-Loader.isShown)
 ```
 
 Finally dispose call hide method on dispose method :
@@ -88,4 +76,5 @@ void dispose() {
   super.dispose();
 }
 ```
+
 
