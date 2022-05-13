@@ -52,7 +52,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         backgroundColor: Colors.green,
                       ),
                       themeData: Theme.of(context)
-                          .copyWith(accentColor: Colors.black54));
+                          .copyWith(colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black54)));
                   Future.delayed(Duration(seconds: 3), () {
                     Loader.hide();
                   });
