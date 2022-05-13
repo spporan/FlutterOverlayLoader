@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({key, this.title}) : super(key: key);
+  MyHomePage({key,  this.title = "Loader"}) : super(key: key);
 
   final String title;
 
@@ -42,7 +42,7 @@ class _MyHomePageState extends State<MyHomePage>
     final bottomPadding = MediaQuery.of(context).viewInsets.bottom;
 
     print("bottomPadding $bottomPadding");
-    return Scaffold(
+    return WillPopScope(child:  Scaffold(
       appBar: AppBar(
         title: Text(widget.title),
         toolbarHeight: 100,
@@ -56,19 +56,29 @@ class _MyHomePageState extends State<MyHomePage>
               'Loading...',
             ),
             ElevatedButton(
-                child: Text("ShowLoader 1"),
+                child: Text("Show Loader 1"),
                 onPressed: () {
-                  //default
+                  print("Loader is being shown before ${Loader.isShown}");
+
+                  ///Show default loader here
                   Loader.show(context,
                       progressIndicator: LinearProgressIndicator());
 
+                  print("Loader is being shown after ${Loader.isShown}");
+
+                  ///loader hide after 10 seconds
                   Future.delayed(Duration(seconds: 10), () {
                     Loader.hide();
+                    print("Loader is being shown after hide ${Loader.isShown}");
                   });
+
                 }),
             ElevatedButton(
-                child: Text("ShowLoader 2"),
+                child: Text("Show Loader 2"),
                 onPressed: () {
+                  print("Loader is being shown before ${Loader.isShown}");
+
+                  ///Show loader 2 here
                   Loader.show(context,
                       isSafeAreaOverlay: false,
                       isBottomBarOverlay: false,
@@ -78,39 +88,57 @@ class _MyHomePageState extends State<MyHomePage>
                         backgroundColor: Colors.red,
                       ),
                       themeData: Theme.of(context)
-                          .copyWith(accentColor: Colors.green));
+                          .copyWith(colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.green))
+                  );
+
+                  print("Loader is being shown after ${Loader.isShown}");
+
+                  ///loader hide after 3 seconds
                   Future.delayed(Duration(seconds: 3), () {
                     Loader.hide();
+
+                    print("Loader is being shown after hide ${Loader.isShown}");
                   });
+
                 }),
             ElevatedButton(
-                child: Text("ShowLoader 3"),
+                child: Text("Show Loader 3"),
                 onPressed: () {
+                  ///Show loader 3 here
                   Loader.show(context,
                       isAppbarOverlay: false,
                       overlayFromTop: 100,
                       progressIndicator: CircularProgressIndicator(),
                       themeData: Theme.of(context)
-                          .copyWith(accentColor: Colors.black38),
+                          .copyWith(colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black38)),
                       overlayColor: Color(0x99E8EAF6));
+
+                  ///loader hide after 3 seconds
                   Future.delayed(Duration(seconds: 3), () {
                     Loader.hide();
                   });
+
                 }),
+
             ElevatedButton(
-                child: Text("ShowLoader 4"),
+                child: Text("Show Loader 4"),
                 onPressed: () {
+                  ///Show loader 4 here
                   Loader.show(context,
                       isSafeAreaOverlay: false,
                       progressIndicator: CircularProgressIndicator(),
                       isBottomBarOverlay: false,
                       overlayFromBottom: 80,
                       themeData: Theme.of(context)
-                          .copyWith(accentColor: Colors.black38),
-                      overlayColor: Color(0x99E8EAF6));
+                          .copyWith(colorScheme: ColorScheme.fromSwatch().copyWith(secondary: Colors.black38)),
+                      overlayColor: Color(0x99E8EAF6)
+                  );
+
+                  ///loader hide after 3 seconds
                   Future.delayed(Duration(seconds: 3), () {
                     Loader.hide();
                   });
+
                 }),
           ],
         ),
@@ -135,6 +163,6 @@ class _MyHomePageState extends State<MyHomePage>
         onTap: _onItemTapped,
         iconSize: 50,
       ),
-    );
+    ), onWillPop:() async => !Loader.isShown);
   }
 }
