@@ -1,7 +1,6 @@
 name: flutter_overlay_loader
-description: A simple Flutter package for managing loader when
-  fetching remote data or any long running async task. Flutter overlay loader is easy to use.
-  You can show loader using only write two lines of code.
+description: A A simple Flutter package for managing overlay loading when
+  fetching remote data or any long-running async task. Flutter overlay loader is easy to use.
 
 version: 1.0.5
 
