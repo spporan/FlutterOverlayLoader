@@ -79,7 +79,7 @@ class Loader extends StatelessWidget {
     _overlayState = Overlay.of(context);
     if (_currentLoader == null) {
       ///Create current Loader Entry
-      _currentLoader = new OverlayEntry(builder: (context) {
+      _currentLoader = OverlayEntry(builder: (context) {
         return Stack(
           children: <Widget>[
             _overlayWidget(
@@ -99,7 +99,7 @@ class Loader extends StatelessWidget {
       });
 
       try {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
+        WidgetsBinding?.instance?.addPostFrameCallback((_) {
           if (_currentLoader != null) {
             _overlayState?.insert(_currentLoader!);
           }
