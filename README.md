@@ -1,7 +1,10 @@
+![Build Passing](https://img.shields.io/badge/Build-passing-green) ![Pub Version](https://img.shields.io/pub/v/flutter_overlay_loader?logo=flutter&logoColor=blue) ![Pub Likes](https://img.shields.io/pub/likes/flutter_overlay_loader?logo=flutter&logoColor=blue) [![GitHub forks](https://img.shields.io/github/forks/spporan/FlutterOverlayLoader)](https://github.com/spporan/FlutterOverlayLoader/network) [![GitHub stars](https://img.shields.io/github/stars/spporan/FlutterOverlayLoader)](https://github.com/spporan/FlutterOverlayLoader/stargazers) [![GitHub issues](https://img.shields.io/github/issues/spporan/FlutterOverlayLoader)](https://github.com/spporan/FlutterOverlayLoader/issues) [![GitHub followers](https://img.shields.io/github/followers/spporan?style=social)](https://github.com/spporan) [![Twitter](https://img.shields.io/twitter/url?style=social&url=https%3A%2F%2Fmobile.twitter.com%2Fmdshahparan520)](https://twitter.com/intent/tweet?text=Wow:&url=https%3A%2F%2Fgithub.com%2Fspporan%2FFlutterOverlayLoader%2F) [![GitHub license](https://img.shields.io/github/license/spporan/FlutterOverlayLoader)](https://github.com/spporan/FlutterOverlayLoader/blob/master/LICENSE)
+
 # flutter_overlay_loader
 
-A new Flutter package for developer who want to show overlay loader or progressbar for completing
-future task.
+A simple Flutter package for managing loader when
+fetching remote data or any long running async task. Flutter overlay loader is easy to use.
+You can show loader using only write two lines of code.
 
 Overlay loader without overlaying Appbar
 <p align="center">
@@ -19,7 +22,7 @@ Overlay Loader without overlaying BottomAppBar and also overlaying AppBar
 
 ```yaml
 dependencies:
-  flutter_overlay_loader: ^1.0.4
+  flutter_overlay_loader: ^1.0.5
 ```
 
 ### Import

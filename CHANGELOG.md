@@ -1,3 +1,7 @@
+## [1.0.5] - May 13, 2022
+* Add loader is being shown or not.
+* Formatted code
+
 ## [1.0.4] - May 13, 2022
 * Add loader is being shown or not. 
 
