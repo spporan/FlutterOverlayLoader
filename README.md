@@ -22,7 +22,7 @@ Overlay Loader without overlaying BottomAppBar and also overlaying AppBar
 
 ```yaml
 dependencies:
-  flutter_overlay_loader: ^1.0.7
+  flutter_overlay_loader: ^1.0.8
 ```
 
 ### Import

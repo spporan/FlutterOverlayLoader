@@ -62,9 +62,6 @@ class Loader extends StatelessWidget {
     /// bottomNavBar then make it false.
     bool isSafeAreaOverlay = true,
   }) {
-
-    /// ensure Initialize WidgetsFlutterBinding
-    WidgetsFlutterBinding.ensureInitialized;
     var safeBottomPadding = MediaQuery.of(context).padding.bottom;
     var defaultPaddingTop = 0.0;
     var defaultPaddingBottom = 0.0;

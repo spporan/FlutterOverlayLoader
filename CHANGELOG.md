@@ -1,3 +1,7 @@
+## [1.0.8] - May 14, 2022
+* Update documentation
+* Fix issues
+
 ## [1.0.7] - May 14, 2022
 * Update documentation
 * Fix issues
