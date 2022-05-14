@@ -1,3 +1,7 @@
+## [1.0.7] - May 14, 2022
+* Update documentation
+* Fix issues
+
 ## [1.0.6] - May 13, 2022
 * Add loader is being shown or not.
 * Update documentation
