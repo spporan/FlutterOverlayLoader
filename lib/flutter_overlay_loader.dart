@@ -99,7 +99,7 @@ class Loader extends StatelessWidget {
       });
 
       try {
-        WidgetsBinding.instance.addPostFrameCallback((_) {
+        WidgetsBinding.instance?.addPostFrameCallback((_) {
           if (_currentLoader != null) {
             _overlayState?.insert(_currentLoader!);
           }
